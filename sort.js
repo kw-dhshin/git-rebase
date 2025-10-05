@@ -1,4 +1,8 @@
-function sortArray(arr) {
+function sortArray(arr, removeDuplicates = false) {
+    if (removeDuplicates) {
+        arr = [...new Set(arr)];
+    }
+
     let swapped;
 
     for (let i = 0; i < arr.length; i++) {
@@ -15,6 +19,11 @@ function sortArray(arr) {
 }
 
 
-let arr = [3, 6, 1, 4, 9, 7, 2, 5, 10, 8];
-sortArray(arr);
-console.log(arr);
+let arr1 = [3, 6, 1, 4, 9, 7, 2, 5, 10, 8, 3, 6];
+console.log("Original:", arr1);
+
+let sorted1 = sortArray(arr1);
+console.log("Sorted (no removal):", sorted1);
+
+let sorted2 = sortArray(arr1, true);
+console.log("Sorted (duplicates removed):", sorted2);
